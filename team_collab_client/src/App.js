@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AddProject from './components/projects/AddProject';
-import Admin from './components/users/Admin';
+import NoPermission from './components/users/NoPermission';
 import AllProjects from './components/projects/AllProjects';
 import Project from './components/projects/Project';
 import Login from './components/users/Login';
@@ -16,6 +16,11 @@ import { fetchProjects } from './redux/actions/projects'
 
 import './App.css';
 class App extends Component {
+
+  componentDidMount() {
+    this.props.fetchProjects();
+  }
+
   render() {
     return (
      <Router>
@@ -55,7 +60,7 @@ class App extends Component {
             )}/>
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
-            <Route exact path="/admin" component={Admin} />
+            <Route exact path="/NoPermission" component={NoPermission} />
             <Route exact path="/oops" component={Oops} />
             <Route exact path="/signup" component={Signup} />
             <Route path="/projects/:projectId" component={Project} />
@@ -68,4 +73,9 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  projects: state.projects,
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, { fetchProjects })(App);

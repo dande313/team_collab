@@ -1,9 +1,53 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import login from '../../redux/actions/auth'
 
-const LoginForm = () =>
-  <div>
-    <p>Login Page</p>
-  </div>
+class LoginForm extends Component {
+  constructor(props) {
+    super(props)
 
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
 
-export default LoginForm;
+  handleOnChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleOnSubmit = event => {
+    event.preventDefault();
+    this.props.login(this.state, this.props.history);
+    this.setState({
+      email: '',
+      password: ''
+    })
+  }
+
+  render() {
+    return (
+      <div>
+      	<h2>Welcome Back!</h2>
+        <form>
+          <div>
+            <label>Email:</label><br />
+            <input name="email" type="email" value={this.state.email} onChange={this.handleOnChange}/>
+          </div>
+          <br></br>
+          <div>
+            <label>Password:</label><br />
+            <input name="password" type="password" value={this.state.password} onChange={this.handleOnChange} />
+          </div>
+          <br></br>
+          <button onClick={this.handleOnSubmit}>Log in</button>
+        </form>
+      </div>
+    )
+  }
+}
+
+export default connect(null, { login })(LoginForm)

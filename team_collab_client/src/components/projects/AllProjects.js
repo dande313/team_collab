@@ -1,9 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
+import ProjectList from './ProjectList';
+import project from './Project';
 
-const AllProjects = () =>
+const AllProjects = ({ match, projects }) =>
   <div>
-    <p>This will be a form to create a project</p>
+    <h2>All Projects:</h2>
+    <div className="main">
+      <ProjectList projects={projects} />
+      <Route path={`${match.url}/:projectId`} component={project} />
+    </div>
   </div>
 
+const mapStateToProps = (state) => {
+  return {
+    projects: state.projects
+  }
+}
 
-export default AllProjects;
+export default connect(mapStateToProps)(AllProjects);
