@@ -25,6 +25,6 @@ class Api::ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:question).permit(:title, :description, :github_repo_url, :assistance_needed)
+      params.require(:project).permit(:title, :description, :github_repo_url, :assistance_needed)
     end
 end

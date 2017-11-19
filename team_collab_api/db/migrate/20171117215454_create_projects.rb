@@ -5,7 +5,6 @@ class CreateProjects < ActiveRecord::Migration[5.1]
       t.string :description
       t.string :github_repo_url
       t.boolean :assistance_needed
-      t.integer :ibu
       t.timestamps
     end
   end

@@ -9,7 +9,6 @@ class AddProject extends Component {
     this.state = {
       title: '',
       assistance_needed: false,
-      ibu: '',
       description: '',
       github_repo_url: ''
     }

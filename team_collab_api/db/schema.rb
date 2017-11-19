@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20171117215700) do
     t.string "description"
     t.string "github_repo_url"
     t.boolean "assistance_needed"
-    t.integer "ibu"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

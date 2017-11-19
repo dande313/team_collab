@@ -29,18 +29,14 @@ class App extends Component {
           <div className="navbar">
             <NavLink className="navlink" to="/">Home</NavLink>
             <NavLink className="navlink" to="/projects">All Projects</NavLink>
-            {!this.props.isAuthenticated &&
               <span>
                 <NavLink className="navlink" to="/login">Log In</NavLink>
                 <NavLink className="navlink" to="/signup">Sign Up</NavLink>
               </span>
-            }
-            {this.props.isAuthenticated &&
               <span>
                 <NavLink className="navlink" to="/projects/new">Add Project</NavLink>
                 <NavLink className="navlink" to="/logout">Logout</NavLink>
               </span>
-            }
           </div>
 
           <div className="header">
@@ -52,7 +48,7 @@ class App extends Component {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/projects" component={AllProjects} />
             <Route exact path="/projects/new" render={() => (
-              !this.props.isAuthenticated ? (
+              this.props.isAuthenticated ? (
                 <Redirect to='/oops'/>
               ) : (
                 <Route component={AddProject} />
