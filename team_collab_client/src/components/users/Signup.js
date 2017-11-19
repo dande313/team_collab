@@ -6,7 +6,7 @@ class SignUpForm extends Component {
   render() {
     return (
       <div>
-        <p>logout page</p>
+        <p>Registration</p>
       </div>
     )
   }

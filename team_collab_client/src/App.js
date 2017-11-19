@@ -29,7 +29,7 @@ class App extends Component {
                 <NavLink className="navlink" to="/login">Log In</NavLink>
                 <NavLink className="navlink" to="/signup">Sign Up</NavLink>
               </span>
-            };
+            }
             {this.props.isAuthenticated &&
               <span>
                 <NavLink className="navlink" to="/projects/new">Add Project</NavLink>
