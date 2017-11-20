@@ -13,11 +13,7 @@ class Logout extends Component {
   render() {
     return (
       <div>
-        <h2>Hey bud, sure ya wanna logout?</h2>
-        <h3>But this app is lager than life!</h3>
-        <h4>That's ok, ale see you later.</h4>
-        <p>Tap This ;)</p>
-        <button onClick={this.handleOnSubmit}>Yes, I'm sick of your puns and I want to leave.</button>
+        <button onClick={this.handleOnSubmit}>Log out</button>
       </div>
     )
   }
