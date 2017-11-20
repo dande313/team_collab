@@ -7,6 +7,7 @@ class Project extends Component {
     this.props.deleteProject(this.props.project, this.props.history)
   }
 
+
   render() {
     return (
       <div key={this.props.project.id}>
@@ -19,11 +20,13 @@ class Project extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const project = state.projects.find(project => project.id === ownProps.match.params.projectId)
+  const project = state.projects.find(project => project.id.to_s === ownProps.match.params.projectId.to_s)
+  console.log(ownProps.match.params.projectId)
+  console.log(state.projects[0].id)
   if (project) {
-    return { project, isAdmin: state.auth.currentUser.admin }
+    return { project }
   } else {
-    return { project: {}, isAdmin: state.auth.currentUser.admin }
+    return { project: {} }
   }
 }
 
