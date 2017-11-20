@@ -29,7 +29,7 @@ class App extends Component {
     return (
      <Router>
         <div className="App">
-
+          <div className="header">
           <div className="navbar">
  
             <div className="user-email">{this.props.isAdmin && "Logged in as Admin"} &nbsp;</div>
@@ -43,18 +43,17 @@ class App extends Component {
                 <span>
                   <NavLink className="navlink" to="/">All Reports</NavLink> |
                   <NavLink className="navlink" to="/urgent">Urgent</NavLink> |
-                  <NavLink className="navlink" to="/projects/new">Submit Report</NavLink> |
+                  <NavLink className="navlink" to="/reports/new">Submit Report</NavLink> |
                   <NavLink className="navlink" to="/logout">Logout</NavLink>
                 </span>
               }
             </div>
 
-          <div className="header">
+      
             <h1 className="title">Team Collaberator</h1>
             <p className="catch-phrase">Too Meta (will change)</p>
-
           </div>
-
+          <div className="wrapper">
           <Switch>
             <Route exact path="/" render={() => (
               !this.props.isAuthenticated ? (
@@ -70,7 +69,7 @@ class App extends Component {
                 <Route component={Urgent} />
               )
             )}/>
-            <Route exact path="/report/new" render={() => (
+            <Route exact path="/reports/new" render={() => (
               !this.props.isAuthenticated ? (
                 <Redirect to='/oops'/>
               ) : (
@@ -94,8 +93,12 @@ class App extends Component {
             <Route path="/report/:reportId" component={Project} />
             <Route component={NotFound} />
           </Switch>
-        </div>
+          </div>
 
+          <div className="footer">
+            <p>Copyright 2017. All Rights Reserved.</p>
+          </div>
+        </div>
      </Router>
     );
   }
