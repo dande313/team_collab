@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { deleteProject } from '../../redux/actions/projects'
 
 class Project extends Component {
+
   handleOnDelete = () => {
     this.props.deleteProject(this.props.project, this.props.history)
   }
@@ -20,9 +21,9 @@ class Project extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const project = state.projects.find(project => project.id.to_s === ownProps.match.params.projectId.to_s)
+  const project = state.projects.find(project => project.id === parseInt((ownProps.match.params.projectId), 10))
   console.log(ownProps.match.params.projectId)
-  console.log(state.projects[0].id)
+  console.log(project)
   if (project) {
     return { project }
   } else {
