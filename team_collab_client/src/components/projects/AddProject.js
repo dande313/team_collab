@@ -43,7 +43,7 @@ class AddProject extends Component {
   render() {
     return(
       <div>
-        <h2>Add Project</h2>
+        <h2>Report Submission</h2>
 
         <form onSubmit={this.handleOnSubmit}>
         <div>
@@ -77,12 +77,12 @@ class AddProject extends Component {
         </div>
 
 	    <div>
-            <label htmlFor="featured">Needs Assistance? </label>
+            <label htmlFor="featured">Needs Assistance?</label>
             <input type="radio" name="featured" value="true" onClick={this.handleRadio} /> Yes
             <input type="radio" name="featured" value="false" onClick={this.handleRadio} /> No
 	    </div>
 
-        <button>Submit Report</button>
+        <button>Submit</button>
         </form>
       </div>
     )

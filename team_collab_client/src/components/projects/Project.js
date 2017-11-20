@@ -18,7 +18,7 @@ class Project extends Component {
         	<p className="flagged-red">The project creator has requested assistance</p>
         }
         {this.props.project.repo_url &&
-         <a className="github_url" href={this.props.project.repo_url}>Link To Respository</a><br/><br/>
+         <div><a className="github_url" href={this.props.project.repo_url}>Link To Respository</a><br/><br/></div>
         }
         {this.props.isAdmin &&
           <button onClick={this.handleOnDelete}>Delete </button>
@@ -33,9 +33,9 @@ const mapStateToProps = (state, ownProps) => {
   console.log(ownProps.match.params.projectId)
   console.log(project)
   if (project) {
-    return { project }
+    return { project, isAdmin: state.auth.currentUser.admin}
   } else {
-    return { project: {} }
+    return { project: {}, isAdmin: state.auth.currentUser.admin}
   }
 }
 
