@@ -12,9 +12,7 @@ class Project extends Component {
       <div key={this.props.project.id}>
         <h2>{this.props.project.title}</h2>
         <p className="description">{this.props.project.description}</p>
-        {this.props.isAdmin &&
-          <button onClick={this.handleOnDelete}>Delete </button>
-        }
+        <button onClick={this.handleOnDelete}>Delete </button>
       </div>
     )
   }
