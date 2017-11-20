@@ -4,13 +4,19 @@ import { Link } from 'react-router-dom'
 class ProjectList extends Component {
   render() {
     const renderProjects = this.props.projects.map(project => 
-      <Link to={`/projects/${project.id}`} key={project.id} className="project-thumbnail"><h4 >{project.title}</h4></Link>
+    <tr>
+      <td> <Link to={`/projects/${project.id}`} key={project.id} className="project-thumbnail"><h4 >{project.title}</h4></Link> </td>
+      {project.assistance_needed ? (<td className="flagged-red"> yes </td>) : (<td> no </td>)}
+    </tr>
     );
 
     return (
-      <div>
+      <table className="projects-table">
+        <tr>
+          <th>Project Name</th><th>Assistance needed?</th>
+        </tr>
         {renderProjects}
-      </div>
+      </table>
     )
   }
 }
