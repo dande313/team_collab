@@ -4,9 +4,15 @@
 
 .navbar {
   background-color: rgba(47, 111, 214);
-  text-align: right;
+  color: rgba(214, 198, 140, 1);
   padding-top: 5px;
   padding-right: 5px;
+}
+
+.user-email {
+  text-align: left;
+  padding: 5px;
+  font-size: small;
 }
 
 .navlink {

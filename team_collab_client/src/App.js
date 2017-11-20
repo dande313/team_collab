@@ -27,27 +27,29 @@ class App extends Component {
      <Router>
         <div className="App">
 
+
           <div className="navbar">
-            <NavLink className="navlink" to="/">Home</NavLink>
-            <NavLink className="navlink" to="/projects">All Projects</NavLink>
+            <div className="user-email">Logged in as...</div>
+            <NavLink className="navlink" to="/">Home</NavLink> |
+            <NavLink className="navlink" to="/projects">All Projects</NavLink> |
               {!this.props.isAuthenticated &&
                 <span>
-                  <NavLink className="navlink" to="/login">Log In</NavLink>
+                  <NavLink className="navlink" to="/login">Log In</NavLink> |
                   <NavLink className="navlink" to="/signup">Sign Up</NavLink>
                 </span>
               }
               {this.props.isAuthenticated &&
                 <span>
-                  <NavLink className="navlink" to="/projects/new">Add Project</NavLink>
+                  <NavLink className="navlink" to="/projects/new">Add Project</NavLink> |
                   <NavLink className="navlink" to="/logout">Logout</NavLink>
                 </span>
               }
-          </div>
+            </div>
 
           <div className="header">
             <h1 className="title">Team Collaberator</h1>
             <p className="catch-phrase">Too Meta (will change)</p>
-            <p className="userEmail"></p>
+
           </div>
 
           <Switch>
@@ -78,7 +80,6 @@ class App extends Component {
 const mapStateToProps = state => ({
   projects: state.projects,
   isAuthenticated: state.auth.isAuthenticated,
-  user: state.auth.currentUser
 })
 
 export default connect(mapStateToProps, { fetchProjects })(App);
