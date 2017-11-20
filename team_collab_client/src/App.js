@@ -32,7 +32,7 @@ class App extends Component {
             <div className="user-email">{this.props.isAdmin && "Logged in as Admin"} &nbsp;</div>
 
             <NavLink className="navlink" to="/">Home</NavLink> |
-            <NavLink className="navlink" to="/projects">All Projects</NavLink> |
+            <NavLink className="navlink" to="/projects">All Reports</NavLink> |
               {!this.props.isAuthenticated &&
                 <span>
                   <NavLink className="navlink" to="/login">Log In</NavLink> |
@@ -41,7 +41,7 @@ class App extends Component {
               }
               {this.props.isAuthenticated &&
                 <span>
-                  <NavLink className="navlink" to="/projects/new">Add Project</NavLink> |
+                  <NavLink className="navlink" to="/projects/new">Submit Report</NavLink> |
                   <NavLink className="navlink" to="/logout">Logout</NavLink>
                 </span>
               }
