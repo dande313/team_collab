@@ -9,7 +9,7 @@ import Login from './components/users/Login';
 import Oops from './components/users/Oops';
 import Logout from './components/users/Logout';
 import NotFound from './components/NotFound';
-import HomePage from './components/HomePage';
+import Deleted from './components/Deleted';
 import Signup from './components/users/Signup';
 import Urgent from './components/projects/Urgent';
 import Secret from './components/Secret';
@@ -32,8 +32,6 @@ class App extends Component {
           <div className="navbar">
  
             <div className="user-email">{this.props.isAdmin && "Logged in as Admin"} &nbsp;</div>
-
-            <NavLink className="navlink" to="/">Home</NavLink> |
               {!this.props.isAuthenticated &&
                 <span>
                   <NavLink className="navlink" to="/login">Log In</NavLink> |
@@ -42,7 +40,7 @@ class App extends Component {
               }
               {this.props.isAuthenticated &&
                 <span>
-                  <NavLink className="navlink" to="/projects">All Reports</NavLink> |
+                  <NavLink className="navlink" to="/">All Reports</NavLink> |
                   <NavLink className="navlink" to="/urgent">Urgent</NavLink> |
                   <NavLink className="navlink" to="/projects/new">Submit Report</NavLink> |
                   <NavLink className="navlink" to="/logout">Logout</NavLink>
@@ -57,8 +55,7 @@ class App extends Component {
           </div>
 
           <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/projects" component={AllProjects} />
+            <Route exact path="/" component={AllProjects} />
             <Route exact path="/urgent" component={Urgent} />
             <Route exact path="/projects/new" render={() => (
               !this.props.isAuthenticated ? (
@@ -76,7 +73,7 @@ class App extends Component {
             )}/>
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
-
+            <Route exact path="/deleted" component={Deleted} />
             <Route exact path="/NoPermission" component={NoPermission} />
             <Route exact path="/oops" component={Oops} />
             <Route exact path="/signup" component={Signup} />

@@ -7,7 +7,7 @@ import project from './Project';
 const AllProjects = ({ match, projects }) =>
   <div>
     <div className="main">
-      <h2>All Reports:</h2>
+      <h2>&nbsp;</h2>
       <ProjectList projects={projects} />
       <Route path={`${match.url}/:projectId`} component={project} />
     </div>

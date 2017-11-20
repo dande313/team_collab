@@ -37,7 +37,6 @@ class AddProject extends Component {
       info: '',
       repo_url: ''
     })
-    this.props.history.push('/projects')
   }
 
   render() {

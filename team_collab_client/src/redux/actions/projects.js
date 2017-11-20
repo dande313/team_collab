@@ -1,13 +1,9 @@
 import ProjectService from '../../services/ProjectService'
 
 const prependProjects = projects => {
-  let sorted_projects = projects.sort(function(a,b) {
-    return a.created_at - b.created_at
-  })
-
   return {
     type: 'SUCCESSFUL_PROJECTS_FETCH',
-    projects: sorted_projects
+    projects: projects
   }
 }
 
@@ -32,7 +28,7 @@ export const createProject = (project, routerHistory) => {
     return ProjectService.createProject(project)
       .then(project => {
         dispatch(prependProject(project));
-        routerHistory.push('/projects')
+        routerHistory.push('/')
       })
   }
 }
@@ -50,7 +46,7 @@ export const deleteProject = (project, routerHistory) => {
     return ProjectService.deleteProject(project)
       .then(project => {
         dispatch(destroyProject(id))
-        routerHistory.push('/projects');
+        routerHistory.push('/deleted');
       })
   }
 }
