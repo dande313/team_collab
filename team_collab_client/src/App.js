@@ -13,6 +13,7 @@ import Deleted from './components/Deleted';
 import Signup from './components/users/Signup';
 import Urgent from './components/projects/Urgent';
 import Secret from './components/Secret';
+import Welcome from './components/Welcome';
 import { fetchProjects } from './redux/actions/projects'
 
 
@@ -55,9 +56,21 @@ class App extends Component {
           </div>
 
           <Switch>
-            <Route exact path="/" component={AllProjects} />
-            <Route exact path="/urgent" component={Urgent} />
-            <Route exact path="/projects/new" render={() => (
+            <Route exact path="/" render={() => (
+              !this.props.isAuthenticated ? (
+                <Redirect to='/welcome'/>
+              ) : (
+                <Route component={AllProjects} />
+              )
+            )}/>
+            <Route exact path="/urgent" render={() => (
+              !this.props.isAuthenticated ? (
+                <Redirect to='/welcome'/>
+              ) : (
+                <Route component={Urgent} />
+              )
+            )}/>
+            <Route exact path="/report/new" render={() => (
               !this.props.isAuthenticated ? (
                 <Redirect to='/oops'/>
               ) : (
@@ -74,10 +87,11 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/deleted" component={Deleted} />
+            <Route exact path="/welcome" component={Welcome} />
             <Route exact path="/NoPermission" component={NoPermission} />
             <Route exact path="/oops" component={Oops} />
             <Route exact path="/signup" component={Signup} />
-            <Route path="/projects/:projectId" component={Project} />
+            <Route path="/report/:reportId" component={Project} />
             <Route component={NotFound} />
           </Switch>
         </div>

@@ -29,9 +29,7 @@ class Project extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const project = state.projects.find(project => project.id === parseInt((ownProps.match.params.projectId), 10))
-  console.log(ownProps.match.params.projectId)
-  console.log(project)
+  const project = state.projects.find(project => project.id === parseInt((ownProps.match.params.reportId), 10))
   if (project) {
     return { project, isAdmin: state.auth.currentUser.admin}
   } else {

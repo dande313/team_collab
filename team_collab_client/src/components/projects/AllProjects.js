@@ -9,7 +9,7 @@ const AllProjects = ({ match, projects }) =>
     <div className="main">
       <h2>&nbsp;</h2>
       <ProjectList projects={projects} />
-      <Route path={`${match.url}/:projectId`} component={project} />
+      <Route path={`${match.url}/:reportId`} component={project} />
     </div>
   </div>
 

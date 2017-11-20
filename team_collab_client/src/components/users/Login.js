@@ -31,8 +31,8 @@ class LoginForm extends Component {
   render() {
     return (
       <div>
-      	<h2>Welcome Back!</h2>
-        <form>
+        <form className="user-form">
+          <h3>Log In</h3>
           <div>
             <label>Email:</label><br />
             <input name="email" type="email" value={this.state.email} onChange={this.handleOnChange}/>
