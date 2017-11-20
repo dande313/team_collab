@@ -15,8 +15,7 @@ const AllProjects = ({ match, projects }) =>
 
 const mapStateToProps = (state) => {
   return {
-    projects: state.projects,
-    project : {}
+    projects: state.projects
   }
 }
 

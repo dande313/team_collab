@@ -1,5 +1,5 @@
 import 'isomorphic-fetch';
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = 'http://localhost:3001/api';
 
 function authenticationRequest(creds) {
   return {
@@ -46,8 +46,8 @@ export default function login(creds, router) {
       .then(response => response.json())
       .then(body => {
         if (body.user.id) {
-          localStorage.setItem('tophop.token', body.token);
-          localStorage.setItem('tophop.admin', body.user.admin);
+          localStorage.setItem('team_collab.token', body.token);
+          localStorage.setItem('team_collab.admin', body.user.admin);
           dispatch(setCurrentUser(body.user));
           router.replace(`/`)
         } else {

@@ -1,7 +1,7 @@
 const initialState = {
   isAuthenticated: localStorage.getItem('team_collab.token') ? true : false,
   isAuthenticating: false,
-  currentUser: { admin: localStorage.getItem('team_collab.admin') ? true : false },
+  currentUser: { admin: localStorage.getItem('team_collab.admin') ? true : false, email: localStorage.getItem('team_collab.email') },
   errorMessage: ''
 }
 

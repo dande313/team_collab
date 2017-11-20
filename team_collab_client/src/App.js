@@ -22,6 +22,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
      <Router>
         <div className="App">
@@ -29,26 +30,31 @@ class App extends Component {
           <div className="navbar">
             <NavLink className="navlink" to="/">Home</NavLink>
             <NavLink className="navlink" to="/projects">All Projects</NavLink>
-              <span>
-                <NavLink className="navlink" to="/login">Log In</NavLink>
-                <NavLink className="navlink" to="/signup">Sign Up</NavLink>
-              </span>
-              <span>
-                <NavLink className="navlink" to="/projects/new">Add Project</NavLink>
-                <NavLink className="navlink" to="/logout">Logout</NavLink>
-              </span>
+              {!this.props.isAuthenticated &&
+                <span>
+                  <NavLink className="navlink" to="/login">Log In</NavLink>
+                  <NavLink className="navlink" to="/signup">Sign Up</NavLink>
+                </span>
+              }
+              {this.props.isAuthenticated &&
+                <span>
+                  <NavLink className="navlink" to="/projects/new">Add Project</NavLink>
+                  <NavLink className="navlink" to="/logout">Logout</NavLink>
+                </span>
+              }
           </div>
 
           <div className="header">
             <h1 className="title">Team Collaberator</h1>
             <p className="catch-phrase">Too Meta (will change)</p>
+            <p className="userEmail"></p>
           </div>
 
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/projects" component={AllProjects} />
             <Route exact path="/projects/new" render={() => (
-              this.props.isAuthenticated ? (
+              !this.props.isAuthenticated ? (
                 <Redirect to='/oops'/>
               ) : (
                 <Route component={AddProject} />
@@ -71,7 +77,8 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   projects: state.projects,
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.currentUser
 })
 
 export default connect(mapStateToProps, { fetchProjects })(App);
