@@ -15,11 +15,11 @@ class Api::ProjectsController < ApplicationController
 
   def destroy
     id = (params[:id])
-    @beer = Question.find(id)
-    if @question
-      @question.destroy
+    @project = Project.find(id)
+    if @project
+      @project.destroy
     else
-      render json: { errors: { message: "Question not found." } }
+      render json: { errors: { message: "Project not found." } }
     end
   end
 
