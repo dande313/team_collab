@@ -11,6 +11,7 @@ import Logout from './components/users/Logout';
 import NotFound from './components/NotFound';
 import HomePage from './components/HomePage';
 import Signup from './components/users/Signup';
+import Urgent from './components/projects/Urgent';
 import { fetchProjects } from './redux/actions/projects'
 
 
@@ -32,7 +33,6 @@ class App extends Component {
             <div className="user-email">{this.props.isAdmin && "Logged in as Admin"} &nbsp;</div>
 
             <NavLink className="navlink" to="/">Home</NavLink> |
-            <NavLink className="navlink" to="/projects">All Reports</NavLink> |
               {!this.props.isAuthenticated &&
                 <span>
                   <NavLink className="navlink" to="/login">Log In</NavLink> |
@@ -41,6 +41,8 @@ class App extends Component {
               }
               {this.props.isAuthenticated &&
                 <span>
+                  <NavLink className="navlink" to="/projects">All Reports</NavLink> |
+                  <NavLink className="navlink" to="/urgent">Urgent</NavLink> |
                   <NavLink className="navlink" to="/projects/new">Submit Report</NavLink> |
                   <NavLink className="navlink" to="/logout">Logout</NavLink>
                 </span>
@@ -56,6 +58,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/projects" component={AllProjects} />
+            <Route exact path="/urgent" component={Urgent} />
             <Route exact path="/projects/new" render={() => (
               !this.props.isAuthenticated ? (
                 <Redirect to='/oops'/>
