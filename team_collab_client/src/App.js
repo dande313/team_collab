@@ -27,9 +27,10 @@ class App extends Component {
      <Router>
         <div className="App">
 
-
           <div className="navbar">
-            <div className="user-email">Logged in as...</div>
+ 
+            <div className="user-email">{this.props.isAdmin && "Logged in as Admin"} &nbsp;</div>
+
             <NavLink className="navlink" to="/">Home</NavLink> |
             <NavLink className="navlink" to="/projects">All Projects</NavLink> |
               {!this.props.isAuthenticated &&
@@ -80,6 +81,7 @@ class App extends Component {
 const mapStateToProps = state => ({
   projects: state.projects,
   isAuthenticated: state.auth.isAuthenticated,
+  isAdmin: state.auth.currentUser.admin
 })
 
 export default connect(mapStateToProps, { fetchProjects })(App);

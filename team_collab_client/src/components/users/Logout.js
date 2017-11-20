@@ -4,8 +4,7 @@ import logout from '../../redux/actions/logout'
 
 class Logout extends Component {
 
-  handleOnSubmit = event => {
-    event.preventDefault();
+  componentWillMount(){
     this.props.logout();
     this.props.history.push('/')
   }
@@ -13,7 +12,6 @@ class Logout extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleOnSubmit}>Log out</button>
       </div>
     )
   }
