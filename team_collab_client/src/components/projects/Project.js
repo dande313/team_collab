@@ -11,9 +11,13 @@ class Project extends Component {
 
   render() {
     return (
-      <div key={this.props.project.id}>
+      <div key={this.props.project.id} className="project-box">
         <h2>{this.props.project.title}</h2>
         <p className="description">{this.props.project.description}</p>
+        {this.props.project.assistance_needed &&
+        	<p>The project creator has requested assistance</p>
+        }
+        <a className="github_url" href={this.props.project.github_repo_url}>Link To Respository</a><br/><br/>
         <button onClick={this.handleOnDelete}>Delete </button>
       </div>
     )
