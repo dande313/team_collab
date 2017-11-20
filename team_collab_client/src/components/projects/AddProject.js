@@ -31,56 +31,54 @@ class AddProject extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     this.props.createProject(this.state, this.props.history);
-    console.log(this.state)
     this.setState({
       title: '',
       assistance_needed: false,
       info: '',
       repo_url: ''
     })
+    this.props.history.push('/projects')
   }
 
   render() {
     return(
       <div>
-        <h2>Report Submission</h2>
-
-        <form onSubmit={this.handleOnSubmit}>
+        <form onSubmit={this.handleOnSubmit} className="report-form">
+        <h2 className="report-form-title">Report Form</h2>
         <div>
-          <label htmlFor="project_title">Project name</label>
+          <label htmlFor="project_title">Project Name</label><br/>
           <input
             type="text"
             name="title"
             value={this.state.title}
             onChange={this.handleOnChange}
             />
-        </div>
+        </div><br/>
 
         <div>
-          <label htmlFor="project_description">Info</label>
-          <input
-            type="text"
+          <label htmlFor="project_description">Info</label><br/>
+          <textarea
             name="info"
             value={this.state.info}
             onChange={this.handleOnChange}
             />
-        </div>
+        </div><br/>
 
         <div>
-          <label htmlFor="project_repo_url">Repo URL (optional)</label>
+          <label htmlFor="project_repo_url">Repo URL (optional)</label><br/>
           <input
             type="url"
             name="repo_url"
             value={this.state.repo_url}
             onChange={this.handleOnChange}
             />
-        </div>
+        </div><br/>
 
 	    <div>
-            <label htmlFor="featured">Needs Assistance?</label>
+            <label htmlFor="featured">Need Assistance?</label>
             <input type="radio" name="featured" value="true" onClick={this.handleRadio} /> Yes
             <input type="radio" name="featured" value="false" onClick={this.handleRadio} /> No
-	    </div>
+	    </div><br/><br/>
 
         <button>Submit</button>
         </form>

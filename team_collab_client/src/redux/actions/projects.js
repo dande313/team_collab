@@ -1,9 +1,13 @@
 import ProjectService from '../../services/ProjectService'
 
-const appendProjects = projects => {
+const prependProjects = projects => {
+  let sorted_projects = projects.sort(function(a,b) {
+    return a.created_at - b.created_at
+  })
+
   return {
     type: 'SUCCESSFUL_PROJECTS_FETCH',
-    projects: projects
+    projects: sorted_projects
   }
 }
 
@@ -11,12 +15,12 @@ export const fetchProjects = () => {
   return dispatch => {
     ProjectService.fetchProjects()
       .then(projects => {
-        dispatch(appendProjects(projects))
+        dispatch(prependProjects(projects))
       })
   }
 }
 
-const appendProject = project => {
+const prependProject = project => {
   return {
     type: 'SUCCESSFUL_CREATE_PROJECT',
     payload: project
@@ -27,8 +31,8 @@ export const createProject = (project, routerHistory) => {
   return dispatch => {
     return ProjectService.createProject(project)
       .then(project => {
-        dispatch(appendProject(project));
-        routerHistory.push('/')
+        dispatch(prependProject(project));
+        routerHistory.push('/projects')
       })
   }
 }
@@ -46,7 +50,7 @@ export const deleteProject = (project, routerHistory) => {
     return ProjectService.deleteProject(project)
       .then(project => {
         dispatch(destroyProject(id))
-        routerHistory.push('/');
+        routerHistory.push('/projects');
       })
   }
 }
