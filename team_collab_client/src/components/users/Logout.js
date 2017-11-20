@@ -6,12 +6,13 @@ class Logout extends Component {
 
   componentWillMount(){
     this.props.logout();
-    this.props.history.push('/')
   }
 
   render() {
     return (
       <div>
+      <br/>
+      You have Successfully Logged Out
       </div>
     )
   }

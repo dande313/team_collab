@@ -12,6 +12,7 @@ import NotFound from './components/NotFound';
 import HomePage from './components/HomePage';
 import Signup from './components/users/Signup';
 import Urgent from './components/projects/Urgent';
+import Secret from './components/Secret';
 import { fetchProjects } from './redux/actions/projects'
 
 
@@ -66,8 +67,16 @@ class App extends Component {
                 <Route component={AddProject} />
               )
             )}/>
+            <Route exact path="/super-secret" render={() => (
+              !this.props.isAdmin ? (
+                <Redirect to='/NoPermission'/>
+              ) : (
+                <Route component={Secret} />
+              )
+            )}/>
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
+
             <Route exact path="/NoPermission" component={NoPermission} />
             <Route exact path="/oops" component={Oops} />
             <Route exact path="/signup" component={Signup} />
