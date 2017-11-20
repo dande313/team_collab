@@ -6,6 +6,8 @@ class ProjectList extends Component {
     const renderProjects = this.props.projects.map(project => 
     <tr>
       <td> <Link to={`/projects/${project.id}`} key={project.id} className="project-thumbnail"><h4 >{project.title}</h4></Link> </td>
+      <td> {project.created_at.substring(0, 10)}</td>
+      <td> {project.created_at.substring(11, 19)}</td>
       {project.assistance_needed ? (<td className="flagged-red"> yes </td>) : (<td> no </td>)}
     </tr>
     );
@@ -13,9 +15,11 @@ class ProjectList extends Component {
     return (
       <table className="projects-table">
         <tr>
-          <th>Project Name</th><th>Assistance needed?</th>
+          <th>Project Name</th><th>Date</th><th>Time</th><th>Assistance needed?</th>
         </tr>
-        {renderProjects}
+        <tbody>
+          {renderProjects}
+        </tbody>
       </table>
     )
   }
