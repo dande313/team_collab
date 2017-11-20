@@ -13,12 +13,16 @@ class Project extends Component {
     return (
       <div key={this.props.project.id} className="project-box">
         <h2>{this.props.project.title}</h2>
-        <p className="description">{this.props.project.description}</p>
+        <p className="description">{this.props.project.info}</p>
         {this.props.project.assistance_needed &&
-        	<p>The project creator has requested assistance</p>
+        	<p className="flagged-red">The project creator has requested assistance</p>
         }
-        <a className="github_url" href={this.props.project.github_repo_url}>Link To Respository</a><br/><br/>
-        <button onClick={this.handleOnDelete}>Delete </button>
+        {this.props.project.repo_url &&
+         <a className="github_url" href={this.props.project.repo_url}>Link To Respository</a><br/><br/>
+        }
+        {this.props.isAdmin &&
+          <button onClick={this.handleOnDelete}>Delete </button>
+        } 
       </div>
     )
   }

@@ -9,8 +9,8 @@ class AddProject extends Component {
     this.state = {
       title: '',
       assistance_needed: false,
-      description: '',
-      github_repo_url: ''
+      info: '',
+      repo_url: ''
     }
   }
 
@@ -35,8 +35,8 @@ class AddProject extends Component {
     this.setState({
       title: '',
       assistance_needed: false,
-      description: '',
-      github_repo_url: ''
+      info: '',
+      repo_url: ''
     })
   }
 
@@ -57,21 +57,21 @@ class AddProject extends Component {
         </div>
 
         <div>
-          <label htmlFor="project_description">Description </label>
+          <label htmlFor="project_description">Info</label>
           <input
             type="text"
-            name="description"
-            value={this.state.description}
+            name="info"
+            value={this.state.info}
             onChange={this.handleOnChange}
             />
         </div>
 
         <div>
-          <label htmlFor="project_github_repo_url">Github URL </label>
+          <label htmlFor="project_repo_url">Repo URL (optional)</label>
           <input
             type="url"
-            name="github_repo_url"
-            value={this.state.github_repo_url}
+            name="repo_url"
+            value={this.state.repo_url}
             onChange={this.handleOnChange}
             />
         </div>
@@ -82,7 +82,7 @@ class AddProject extends Component {
             <input type="radio" name="featured" value="false" onClick={this.handleRadio} /> No
 	    </div>
 
-        <button>Add project</button>
+        <button>Submit Report</button>
         </form>
       </div>
     )
