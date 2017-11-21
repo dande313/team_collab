@@ -20,13 +20,25 @@ import { fetchProjects } from './redux/actions/projects'
 
 import './App.css';
 class App extends Component {
+  constructor() {
+    super()
+    this.ourGreatSecret = this.ourGreatSecret.bind(this)
+    this.state = { title: "Team Collaberator" };
+  }
+
+  ourGreatSecret(e){
+    e.preventDefault()
+    let secrets = ["Meta Labor Locator", "Boar Mate Boar Collator", "A Tame Collar Robot", "Meat Altar Bro Loco", "Arab Color Tea Molt", "Cobra Atoll or Meat?", "Lab Coral Mare Toot", 
+    "Colt Bola Ate Armor","Boat Corral to Meal", "Abort Amoral Eclat","A Motorboat Caller", "Bromate Allocator", "Arboreal Tact Loom", "Clam Realtor Taboo", "Lateral Robot Coma", "Carrot Ablate Loom" ]
+    let secret = secrets[Math.floor(Math.random()*secrets.length)]
+    this.setState({title: secret})
+  }
 
   componentDidMount() {
     this.props.fetchProjects();
   }
 
   render() {
-    console.log(this.props)
     return (
      <Router>
         <div className="App">
@@ -52,7 +64,7 @@ class App extends Component {
             </div>
 
       
-            <h1 className="title">Team Collaberator</h1>
+            <h1 className="title">{this.state.title}</h1>
             <p className="catch-phrase">Too Meta (will change)</p>
           </div>
           <div className="wrapper">
@@ -89,7 +101,7 @@ class App extends Component {
               !this.props.isAdmin ? (
                 <Redirect to='/NoPermission'/>
               ) : (
-                <Route component={Secret} />
+                <Route render={(props) => (<Secret {...props} ourGreatSecret={this.ourGreatSecret}/>)}/>
               )
             )}/>
             <Route exact path="/login" component={Login} />
@@ -100,7 +112,7 @@ class App extends Component {
             <Route exact path="/oops" component={Oops} />
             <Route exact path="/signup" component={Signup} />
             <Route path="/reports/:reportId" component={Project} />
-            <Route exact path="/signup" component={NotFound} />
+            <Route component={NotFound} />
           </Switch>
           </div>
 
@@ -116,7 +128,7 @@ class App extends Component {
 const mapStateToProps = state => ({
   projects: state.projects,
   isAuthenticated: state.auth.isAuthenticated,
-  isAdmin: state.auth.currentUser.admin
+  isAdmin: state.auth.currentUser.admin,
 })
 
 export default connect(mapStateToProps, { fetchProjects })(App);
