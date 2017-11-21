@@ -20,7 +20,7 @@ class Project extends Component {
         {this.props.project.repo_url &&
          <div><a className="github_url" href={this.props.project.repo_url}>Link To Respository</a><br/><br/></div>
         }
-        {this.props.isAdmin &&
+        {this.props.isAdmin && this.props.project.title !== "Error: does not exist" &&
           <button onClick={this.handleOnDelete}>Delete </button>
         } 
       </div>

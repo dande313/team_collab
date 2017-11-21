@@ -14,7 +14,7 @@ class ProjectList extends Component {
     })
     const renderProjects = sorted_projects.map(project => 
     <tr key={project.id} className="table-row"  >
-      <td> <Link to={`/report/${project.id}`}><h4 >{project.title}</h4></Link> </td>
+      <td> <Link to={`/reports/${project.id}`}><h4 >{project.title}</h4></Link> </td>
       <td> {project.created_at.substring(0, 10)}</td>
       <td> {project.created_at.substring(11, 19)}</td>
       <td> {project.info}</td>
