@@ -27,7 +27,6 @@
 
 .header {
   background-color: rgba(47, 111, 214);
-  font-family: 'Palatino Linotype', Arial;
   font-variant: small-caps;
   font-size: x-large;
   padding: 1px;
@@ -37,6 +36,7 @@
 }
 
 .title {
+  font-family: 'Palatino Linotype', Arial;
   color: rgba(214, 198, 140);
 }
 
@@ -193,4 +193,22 @@
   bottom: 0px;
   color: rgba(214, 198, 140, 1);
   position:absolute;
+}
+
+.welcome-note {
+  margin-top: 20px;
+  border-right: 5px solid;
+  border-right-color: #f7eed2;
+  border-bottom: 5px solid;
+  border-bottom-color: #f6f0bb;
+  width:450px;
+  padding-top:0px;
+  padding-bottom:20px;
+  padding-left:25px;
+  padding-right: 25px;
+  background-color: #f5f5d2;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+  text-align: left;
 }

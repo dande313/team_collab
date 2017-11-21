@@ -1,5 +1,4 @@
-##Team Collaborator 
-##By Allen Anderson 
+##Team Collaborator -by Allen Anderson 
 
 
 ##INSTRUCTIONS:

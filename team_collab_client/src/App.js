@@ -14,6 +14,7 @@ import Signup from './components/users/Signup';
 import Urgent from './components/projects/Urgent';
 import Secret from './components/Secret';
 import Welcome from './components/Welcome';
+import Home from './components/Home';
 import { fetchProjects } from './redux/actions/projects'
 
 
@@ -41,7 +42,8 @@ class App extends Component {
               }
               {this.props.isAuthenticated &&
                 <span>
-                  <NavLink className="navlink" to="/">All Reports</NavLink> |
+                  <NavLink className="navlink" to="/">Home</NavLink> |
+                  <NavLink className="navlink" to="/reports">All Reports</NavLink> |
                   <NavLink className="navlink" to="/urgent">Urgent</NavLink> |
                   <NavLink className="navlink" to="/reports/new">Submit Report</NavLink> |
                   <NavLink className="navlink" to="/logout">Logout</NavLink>
@@ -58,6 +60,13 @@ class App extends Component {
             <Route exact path="/" render={() => (
               !this.props.isAuthenticated ? (
                 <Redirect to='/welcome'/>
+              ) : (
+                <Route component={Home} />
+              )
+            )}/>
+             <Route exact path="/reports" render={() => (
+              !this.props.isAuthenticated ? (
+                <Redirect to='/oops'/>
               ) : (
                 <Route component={AllProjects} />
               )
@@ -90,7 +99,7 @@ class App extends Component {
             <Route exact path="/NoPermission" component={NoPermission} />
             <Route exact path="/oops" component={Oops} />
             <Route exact path="/signup" component={Signup} />
-            <Route path="/report/:reportId" component={Project} />
+            <Route path="/reports/:reportId" component={Project} />
             <Route exact path="/signup" component={NotFound} />
           </Switch>
           </div>
