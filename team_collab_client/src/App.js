@@ -29,7 +29,7 @@ class App extends Component {
   ourGreatSecret(e){
     e.preventDefault()
     let secrets = ["Meta Labor Locator", "Boar Mate Boar Collator", "A Tame Collar Robot", "Meat Altar Bro Loco", 
-    "Arab Color Tea Molt", "Cobra Atoll or Meat?", "Lab Coral Mare Toot", "Colt Bola Ate Armor","Boat Corral to Meal", 
+    "Arab Color Tea Molt", "Cobra, Atoll or Meat?", "Lab Coral Mare Toot", "Colt Bola Ate Armor","Boat Corral to Meal", 
     "Abort Amoral Eclat","A Motorboat Caller", "Bromate Allocator", "Arboreal Tact Loom", "Clam Realtor Taboo", 
     "Lateral Robot Coma", "Carrot Ablate Loom" ]
     let secret = secrets[Math.floor(Math.random()*secrets.length)]
@@ -41,6 +41,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
      <Router>
         <div className="App">
@@ -113,7 +114,13 @@ class App extends Component {
             <Route exact path="/NoPermission" component={NoPermission} />
             <Route exact path="/oops" component={Oops} />
             <Route exact path="/signup" component={Signup} />
-            <Route path="/reports/:reportId" component={Project} />
+            <Route path="/reports/:reportId" render={() => (
+              !this.props.isAuthenticated ? (
+                <Redirect to='/oops'/>
+              ) : (
+                <Route component={Project} />
+              )
+            )}/>
             <Route component={NotFound} />
           </Switch>
           </div>
@@ -130,7 +137,7 @@ class App extends Component {
 const mapStateToProps = state => ({
   projects: state.projects,
   isAuthenticated: state.auth.isAuthenticated,
-  isAdmin: state.auth.currentUser.admin,
+  isAdmin: state.auth.currentUser.admin
 })
 
 export default connect(mapStateToProps, { fetchProjects })(App);

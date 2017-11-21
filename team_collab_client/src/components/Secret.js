@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Secret = (props) => {
-	console.log(props)
 	return (
 	<div>
 		<br/>
