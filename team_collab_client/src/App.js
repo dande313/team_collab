@@ -64,7 +64,7 @@ class App extends Component {
             )}/>
             <Route exact path="/urgent" render={() => (
               !this.props.isAuthenticated ? (
-                <Redirect to='/welcome'/>
+                <Redirect to='/oops'/>
               ) : (
                 <Route component={Urgent} />
               )
@@ -91,7 +91,7 @@ class App extends Component {
             <Route exact path="/oops" component={Oops} />
             <Route exact path="/signup" component={Signup} />
             <Route path="/report/:reportId" component={Project} />
-            <Route component={NotFound} />
+            <Route exact path="/signup" component={NotFound} />
           </Switch>
           </div>
 

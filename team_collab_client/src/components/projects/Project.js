@@ -33,7 +33,7 @@ const mapStateToProps = (state, ownProps) => {
   if (project) {
     return { project, isAdmin: state.auth.currentUser.admin}
   } else {
-    return { project: {}, isAdmin: state.auth.currentUser.admin}
+    return { project: {title: "Error: does not exist"}, isAdmin: state.auth.currentUser.admin}
   }
 }
 
