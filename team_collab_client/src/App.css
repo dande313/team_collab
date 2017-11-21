@@ -179,7 +179,7 @@
 
 }
 .wrapper {
-  min-height: calc(100vh - 265px);
+  min-height: calc(100vh - 264px);
   padding: 10px;
   padding-bottom:60px;
 }
