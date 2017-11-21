@@ -28,7 +28,7 @@ export const createProject = (project, routerHistory) => {
     return ProjectService.createProject(project)
       .then(project => {
         dispatch(prependProject(project));
-        routerHistory.push('/')
+        routerHistory.push('/reports')
       })
   }
 }

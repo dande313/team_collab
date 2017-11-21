@@ -18,7 +18,7 @@ class Project extends Component {
         	<p className="flagged-red">The project creator has requested assistance</p>
         }
         {this.props.project.repo_url &&
-         <div><a className="github_url" href={this.props.project.repo_url}>Link To Respository</a><br/><br/></div>
+         <div><a className="github_url" target="_blank" href={this.props.project.repo_url}>Link To Respository</a><br/><br/></div>
         }
         {this.props.isAdmin && this.props.project.title !== "Error: does not exist" &&
           <button onClick={this.handleOnDelete}>Delete </button>

@@ -33,7 +33,7 @@ class App extends Component {
           <div className="header">
           <div className="navbar">
  
-            <div className="user-email">{this.props.isAdmin && "Logged in as Admin"} &nbsp;</div>
+            <div className="user-admin">{this.props.isAdmin && "Logged in as Admin"} &nbsp;</div>
               {!this.props.isAuthenticated &&
                 <span>
                   <NavLink className="navlink" to="/login">Log In</NavLink> |
