@@ -1,7 +1,7 @@
 import React from 'react';
 import Introduction from './Introduction';
 
-const Home = () =>
+const Home = (props) =>
 	<div className="welcome-note">
 	  <br/>
 	  <h2>Introduction</h2>

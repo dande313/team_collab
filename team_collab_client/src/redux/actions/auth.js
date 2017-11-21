@@ -48,6 +48,7 @@ export default function login(creds, router) {
         if (body.user.id) {
           localStorage.setItem('team_collab.token', body.token);
           localStorage.setItem('team_collab.admin', body.user.admin);
+          localStorage.setItem('team_collab.email', body.user.email);
           dispatch(setCurrentUser(body.user));
           router.replace(`/`)
         } else {
