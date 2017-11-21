@@ -28,8 +28,10 @@ class App extends Component {
 
   ourGreatSecret(e){
     e.preventDefault()
-    let secrets = ["Meta Labor Locator", "Boar Mate Boar Collator", "A Tame Collar Robot", "Meat Altar Bro Loco", "Arab Color Tea Molt", "Cobra Atoll or Meat?", "Lab Coral Mare Toot", 
-    "Colt Bola Ate Armor","Boat Corral to Meal", "Abort Amoral Eclat","A Motorboat Caller", "Bromate Allocator", "Arboreal Tact Loom", "Clam Realtor Taboo", "Lateral Robot Coma", "Carrot Ablate Loom" ]
+    let secrets = ["Meta Labor Locator", "Boar Mate Boar Collator", "A Tame Collar Robot", "Meat Altar Bro Loco", 
+    "Arab Color Tea Molt", "Cobra Atoll or Meat?", "Lab Coral Mare Toot", "Colt Bola Ate Armor","Boat Corral to Meal", 
+    "Abort Amoral Eclat","A Motorboat Caller", "Bromate Allocator", "Arboreal Tact Loom", "Clam Realtor Taboo", 
+    "Lateral Robot Coma", "Carrot Ablate Loom" ]
     let secret = secrets[Math.floor(Math.random()*secrets.length)]
     this.setState({title: secret})
   }
@@ -117,7 +119,7 @@ class App extends Component {
           </div>
 
           <div className="footer">
-            <p>Copyright 2017. All Rights Reserved.</p>
+            <p>Copyright 2017. <NavLink className="hidden-link" to="/super-secret">All</NavLink> Rights Reserved.</p>
           </div>
         </div>
      </Router>

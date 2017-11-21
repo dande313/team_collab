@@ -212,3 +212,9 @@
   font-size: 18px;
   text-align: left;
 }
+
+.hidden-link {
+  text-decoration: none;
+  color: rgba(214, 198, 140, 1);
+  cursor: text;
+}
