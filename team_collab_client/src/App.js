@@ -76,7 +76,7 @@ class App extends Component {
               !this.props.isAuthenticated ? (
                 <Redirect to='/welcome'/>
               ) : (
-                <Route component={Home} />
+                <Route render={(props) => (<Home userEmail={this.props.userEmail}/>)}/>
               )
             )}/>
              <Route exact path="/reports" render={() => (

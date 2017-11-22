@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Introduction = () =>
+const Introduction = ({userEmail}) =>
 	<div className="intro-text">
-	  <p>Welcome! So happy you could join us. This app was created as the final 
+	  <p>Welcome {userEmail}! So happy you could join us. This app was created as the final 
 	  portfolio project for Flatiron's Full-Stack Web Development program. It was 
 	  created with React/Redux, with a Rails API backend. To check out the project
 	  yourself, visit the <a href="https://github.com/dande313/team_collab">Team 
