@@ -41,14 +41,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.userEmail)
     return (
      <Router>
         <div className="App">
           <div className="header">
           <div className="navbar">
  
-            <div className="user-admin">{this.props.isAdmin && "Logged in as Admin"} </div>
+            <div className="user-admin">{this.props.isAdmin && "Logged in as Admin"} &nbsp; </div>
               {!this.props.isAuthenticated &&
                 <span>
                   <NavLink className="navlink" to="/login">Log In</NavLink> |

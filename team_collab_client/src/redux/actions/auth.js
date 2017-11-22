@@ -55,6 +55,7 @@ export default function login(creds, router) {
           dispatch(loginError(body.error))
           return Promise.reject(body)
         }
-    }).catch(err => console.log("Error: ", err))
+    }).catch((err) => {console.log("Error:", err );
+     alert("Error: Invalid credentials. Please try again.");})
   }
 }

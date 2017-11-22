@@ -109,6 +109,13 @@
     box-sizing: border-box;
 }
 
+.report-form input:required, textarea:required {
+    box-shadow:none;
+}
+.report-form-disable input:invalid {
+    box-shadow:0 0 3px red;
+}
+
 .report-form button {
     width: 100%;
     padding: 15px;

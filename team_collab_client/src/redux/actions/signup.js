@@ -48,12 +48,14 @@ export default function signup(creds, router) {
       if (body.user.id) {
         localStorage.setItem('team_collab.token', body.token);
         localStorage.setItem('team_collab.admin', body.user.admin);
+        localStorage.setItem('team_collab.email', body.user.email);
         dispatch(setCurrentUser(body.user));
         router.replace(`/`)
       } else {
-        dispatch(signupError(body.errr))
+        dispatch(signupError(body.err))
         return Promise.reject(body)
       }
-    }).catch(err => console.log("Error: ", err))
+    }).catch((err) => {console.log("Error:", err );
+     alert("Error: Invalid credentials. Please try again.");})
   }
 }

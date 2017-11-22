@@ -52,6 +52,7 @@ class AddReport extends Component {
             name="title"
             value={this.state.title}
             onChange={this.handleOnChange}
+            required
             />
         </div><br/>
 
@@ -61,6 +62,7 @@ class AddReport extends Component {
             name="info"
             value={this.state.info}
             onChange={this.handleOnChange}
+            required
             />
         </div><br/>
 

@@ -10,6 +10,7 @@ export default function logoutUser() {
   return dispatch => {
     localStorage.removeItem('team_collab.token')
     localStorage.removeItem('team_collab.admin')
+    localStorage.removeItem('team_collab.email')
     dispatch(receiveLogout())
   }
 }
