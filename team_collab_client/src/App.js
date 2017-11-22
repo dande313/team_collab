@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import AddProject from './components/projects/AddProject';
+import AddReport from './components/reports/AddReport';
 import NoPermission from './components/users/NoPermission';
-import AllProjects from './components/projects/AllProjects';
-import Project from './components/projects/Project';
+import AllReports from './components/reports/AllReports';
+import Report from './components/reports/Report';
 import Login from './components/users/Login';
 import Oops from './components/users/Oops';
 import Logout from './components/users/Logout';
 import NotFound from './components/NotFound';
 import Deleted from './components/Deleted';
 import Signup from './components/users/Signup';
-import Urgent from './components/projects/Urgent';
+import Urgent from './components/reports/Urgent';
 import Secret from './components/Secret';
 import Welcome from './components/Welcome';
 import Home from './components/Home';
-import { fetchProjects } from './redux/actions/projects'
+import { fetchReports } from './redux/actions/reports'
 
 
 import './App.css';
@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchProjects();
+    this.props.fetchReports();
   }
 
   render() {
@@ -83,7 +83,7 @@ class App extends Component {
               !this.props.isAuthenticated ? (
                 <Redirect to='/oops'/>
               ) : (
-                <Route component={AllProjects} />
+                <Route component={AllReports} />
               )
             )}/>
             <Route exact path="/urgent" render={() => (
@@ -97,7 +97,7 @@ class App extends Component {
               !this.props.isAuthenticated ? (
                 <Redirect to='/oops'/>
               ) : (
-                <Route component={AddProject} />
+                <Route component={AddReport} />
               )
             )}/>
             <Route exact path="/super-secret" render={() => (
@@ -118,7 +118,7 @@ class App extends Component {
               !this.props.isAuthenticated ? (
                 <Redirect to='/oops'/>
               ) : (
-                <Route component={Project} />
+                <Route component={Report} />
               )
             )}/>
             <Route component={NotFound} />
@@ -135,10 +135,10 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  projects: state.projects,
+  reports: state.reports,
   isAuthenticated: state.auth.isAuthenticated,
   isAdmin: state.auth.currentUser.admin,
   userEmail: state.auth.currentUser.email
 })
 
-export default connect(mapStateToProps, { fetchProjects })(App);
+export default connect(mapStateToProps, { fetchReports })(App);

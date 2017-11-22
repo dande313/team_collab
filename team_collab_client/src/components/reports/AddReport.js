@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createProject } from '../../redux/actions/projects';
+import { createReport } from '../../redux/actions/reports';
 
-class AddProject extends Component {
+class AddReport extends Component {
   constructor(props) {
     super(props)
 
@@ -10,7 +10,8 @@ class AddProject extends Component {
       title: '',
       assistance_needed: false,
       info: '',
-      repo_url: ''
+      repo_url: '',
+      user_email: localStorage.getItem('team_collab.email')
     }
   }
 
@@ -30,7 +31,7 @@ class AddProject extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    this.props.createProject(this.state, this.props.history);
+    this.props.createReport(this.state, this.props.history);
     this.setState({
       title: '',
       assistance_needed: false,
@@ -45,7 +46,7 @@ class AddProject extends Component {
         <form onSubmit={this.handleOnSubmit} className="report-form">
         <h2 className="report-form-title">Report Form</h2>
         <div>
-          <label htmlFor="project_title">Project Name</label><br/>
+          <label htmlFor="report_title">Report Name</label><br/>
           <input
             type="text"
             name="title"
@@ -55,7 +56,7 @@ class AddProject extends Component {
         </div><br/>
 
         <div>
-          <label htmlFor="project_description">Info</label><br/>
+          <label htmlFor="report_description">Info</label><br/>
           <textarea
             name="info"
             value={this.state.info}
@@ -64,7 +65,7 @@ class AddProject extends Component {
         </div><br/>
 
         <div>
-          <label htmlFor="project_repo_url">Repo URL (optional)</label><br/>
+          <label htmlFor="report_repo_url">Repo URL (optional)</label><br/>
           <input
             type="url"
             name="repo_url"
@@ -92,4 +93,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { createProject })(AddProject);
+export default connect(mapStateToProps, { createReport })(AddReport);

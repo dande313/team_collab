@@ -1,31 +1,31 @@
 const API_URL = 'http://localhost:3001/api'
 
-const ProjectService = {
-  fetchProjects() {
-    return fetch(`${API_URL}/projects`)
+const ReportService = {
+  fetchReports() {
+    return fetch(`${API_URL}/reports`)
       .then(response => response.json())
   },
 
-  createProject(project) {
+  createReport(report) {
     const request = {
       method: 'POST',
       body: JSON.stringify({
-        project: project
+        report: report
       }),
       headers: {
         'Content-Type': 'application/json',
       }
     }
 
-    return fetch(`${API_URL}/projects`, request)
+    return fetch(`${API_URL}/reports`, request)
       .then(response => response.json())
   },
 
-  deleteProject(project) {
-    return fetch(`${API_URL}/projects/` + project.id, {
+  deleteReport(report) {
+    return fetch(`${API_URL}/reports/` + report.id, {
       method: 'delete'
     })
   }
 }
 
-export default ProjectService;
+export default ReportService;

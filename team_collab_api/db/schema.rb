@@ -12,10 +12,11 @@
 
 ActiveRecord::Schema.define(version: 20171117215700) do
 
-  create_table "projects", force: :cascade do |t|
+  create_table "reports", force: :cascade do |t|
     t.string "title"
     t.string "info"
     t.string "repo_url"
+    t.string "user_email"
     t.boolean "assistance_needed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

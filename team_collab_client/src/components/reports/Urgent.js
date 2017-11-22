@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import ProjectList from './ProjectList';
-import Project from './Project';
+import ReportList from './ReportList';
+import Report from './Report';
 
 class Urgent extends Component {
   render() {
-    const urgent = this.props.projects.filter(project => project.assistance_needed === true)
+    const urgent = this.props.reports.filter(report => report.assistance_needed === true)
 
     return (
       <div>
           <h2>Reports flagged for Assistance:</h2>
           <div className="main">
-            <ProjectList projects={urgent} />
-            <Route path={`${this.props.match.url}/:projectId`} component={Project} />
+            <ReportList reports={urgent} />
+            <Route path={`${this.props.match.url}/:reportId`} component={Report} />
           </div>
         </div>
     )
@@ -22,7 +22,7 @@ class Urgent extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    projects: state.projects
+    reports: state.reports
   }
 }
 
