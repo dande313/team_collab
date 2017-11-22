@@ -20,7 +20,7 @@ class Report extends Component {
         {this.props.report.repo_url &&
          <div><a className="github_url" target="_blank" href={this.props.report.repo_url}>Link To Respository</a><br/><br/></div>
         }
-        {this.props.isAdmin && this.props.report.title !== "Error: does not exist" &&
+        {this.props.isAdmin && this.props.report.user_email !== undefined &&
           <button onClick={this.handleOnDelete}>Delete </button>
         } 
       </div>
@@ -29,9 +29,19 @@ class Report extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const report = state.reports.find(report => report.id === parseInt((ownProps.match.params.reportId), 10))
-  if (report) {
-    return { report, isAdmin: state.auth.currentUser.admin}
+  const reports = state.reports || [];
+  const report_target_id = parseInt((ownProps.match.params.reportId), 10);
+  const too_high = (reports.find(report => report.id >= report_target_id) === undefined)
+  const report_target = reports.find(report => report.id === report_target_id)
+  console.log(too_high)
+  if (report_target) {
+    return { report: report_target, isAdmin: state.auth.currentUser.admin}
+  } else if (too_high) {
+    return { report: {title: "An Ode to the Uncreated",
+	info: " One day to exist? Brimming possibilities... Or might never be"}, isAdmin: state.auth.currentUser.admin}
+  } else if (!too_high) {
+    return { report: {title: "An Ode to the Forgotton",
+	info: "Brought low in its death, No one still remembers. Much like you, one day"}, isAdmin: state.auth.currentUser.admin}
   } else {
     return { report: {title: "Error: does not exist"}, isAdmin: state.auth.currentUser.admin}
   }
