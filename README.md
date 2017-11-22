@@ -2,11 +2,11 @@
 
 
 ##INSTRUCTIONS:
--In your console, navigate to team_collab_api folder
--run "rails s -p 3001"
--Open a new console, and navigate to team_collab_client
--run "npm install"
--run "npm start"
+#In your console, navigate to team_collab_api folder
+#run "rails s -p 3001"
+#Open a new console, and navigate to team_collab_client
+#run "npm install"
+#run "npm start"
 
 ##NOTES: I have already seeded the API with 60+ reports, as well as two users. If you'd like to start fresh, navigate to team_collab_api\db and delete "development.sqlite3" and schema.rb. Re-initialize the database by running "rake db:migrate" from the team_collab_api folder. You are then welcome to modify "seeeds.rb" with any data you would like to start with. If you wish to upload the seeded data, run "rake db:seed" from the console.
 
